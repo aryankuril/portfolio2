@@ -4,14 +4,22 @@ import React from "react";
 
 import { companies, testimonials } from "@/data";
 import { InfiniteMovingCards } from "./ui/InfiniteCards";
+import { motion } from "framer-motion";
 
 const Clients = () => {
   return (
     <section id="testimonials" className="py-20           ">
+      <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
       <h1 className="heading">
         Kind Words From
         <span className="text-purple"> Satisfied Clients</span>
       </h1>
+      </motion.div>
 
       <div className="flex flex-col items-center max-lg:mt-10">
         <div

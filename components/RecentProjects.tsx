@@ -4,19 +4,51 @@ import { useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const RecentProjects = () => {
   const [activeTab, setActiveTab] = useState("website");
-
+const gridRef = useRef(null);
+const isInView = useInView(gridRef, { once: true, amount: 0.15 });
   const filteredProjects = projects.filter((item) => item.type === activeTab);
+
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 80 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1], // smoother easing
+    },
+  },
+};
 
   return (
     <div className="py-20">
-
-       <h1 className="heading">
-         Recent
-        <span className="text-purple"> Projects</span>
-      </h1>
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h1 className="heading">
+          Recent
+          <span className="text-purple"> Projects</span>
+        </h1>
+      </motion.div>
       {/* <h1 className="heading">
         <span className="text-purple">Recent projects</span>
       </h1> */}
@@ -55,9 +87,16 @@ const RecentProjects = () => {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 w-full">
+      <motion.div
+        ref={gridRef}
+        key={activeTab}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 w-full"
+      >
         {filteredProjects.map((item) => (
-          <div key={item.id} className="w-full">
+          <motion.div key={item.id} variants={cardVariants} className="w-full">
             <PinContainer containerClassName="w-full" className="w-full">
               <div className="relative w-full h-[220px] mb-6 overflow-hidden rounded-2xl">
                 <img
@@ -102,9 +141,9 @@ const RecentProjects = () => {
                 </a>
               </div>
             </PinContainer>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

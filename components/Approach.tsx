@@ -1,17 +1,52 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
+
+
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    },
+  };
   return (
     <section className="w-full py-20">
-      <h1 className="heading ">
-        My <span className="text-purple">approach</span>
-      </h1>
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h1 className="heading ">
+          My <span className="text-purple">approach</span>
+        </h1>
+      </motion.div>
       {/* remove bg-white dark:bg-black */}
-      <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4"
+      >
         {/* add des prop */}
+        <motion.div variants={cardVariants}>
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
@@ -25,6 +60,8 @@ const Approach = () => {
             containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
           />
         </Card>
+        </motion.div>
+        < motion.div variants={cardVariants}>
         <Card
           title="Development & Progress Update"
           icon={<AceternityIcon order="Phase 2" />}
@@ -47,6 +84,9 @@ const Approach = () => {
           {/* remove this one */}
           {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
         </Card>
+        </motion.div>
+        <motion.div variants={cardVariants}>
+        
         <Card
           title="Development & Launch"
           icon={<AceternityIcon order="Phase 3" />}
@@ -60,7 +100,8 @@ const Approach = () => {
             colors={[[125, 211, 252]]}
           />
         </Card>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

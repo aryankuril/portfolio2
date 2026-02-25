@@ -13,7 +13,7 @@ export const gridItems = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "/b1.2.png",
     spareImg: "",
   },
   {
@@ -49,7 +49,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title:"Currently Building a reusable JS animation library for multiple UI components.",
+    title:
+      "Currently Building a reusable JS animation library for multiple UI components.",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -76,7 +77,13 @@ export const projects = [
     title: "DEX",
     des: "I built a full-stack SaaS platform enabling secure social media content collaboration, structured approvals, and client reviews via private links.",
     img: "/projects/dex.png",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    iconLists: [
+      "/next.svg",
+      "/tail.svg",
+      "/ts.svg",
+      "/three.svg",
+      "/webflow.png",
+    ],
     link: "https://www.makeyourdex.com",
   },
   {
@@ -179,7 +186,7 @@ export const projects = [
     iconLists: ["/re.svg", "/java-script.png", "/css.png"],
     link: "https://memory-game-aryan.netlify.app",
   },
-   {
+  {
     id: 12,
     type: "game",
     title: "Tetris Game",
@@ -197,7 +204,7 @@ export const projects = [
     iconLists: ["/re.svg", "/java-script.png", "/css.png"],
     link: "https://pong-aryan.netlify.app",
   },
-    {
+  {
     id: 14,
     type: "game",
     title: "Snake Game",
@@ -206,8 +213,7 @@ export const projects = [
     iconLists: ["/re.svg", "/java-script.png", "/css.png"],
     link: "https://snakegame-aryan.netlify.app",
   },
-    
- 
+
   {
     id: 15,
     type: "game",
@@ -242,7 +248,7 @@ export const projects = [
     des: "An Expense Tracker app to manage income, track daily expenses, and visualize spending habits with simple, clear insights.",
     img: "/projects/expence.png",
     iconLists: ["/re.svg", "/java-script.png", "/css.png"],
-    link: "https://expense-tracker-aryann.netlify.app",
+    link: "https://expensetracker-ochre-tau.vercel.app",
   },
   // {
   //   id: 14,
@@ -253,9 +259,6 @@ export const projects = [
   //   iconLists: ["/re.svg", "/java-script.png", "/css.png"],
   //   link: "https://todo-list-aryann.netlify.app",
   // },
-
-  
-
 ];
 
 
@@ -284,7 +287,7 @@ export const testimonials = [
   {
     quote:
       "The college office project required attention to detail and proper data handling. Aryan managed the development efficiently and provided continuous support even after deployment.",
-    name: "Shrinivas Kumar",
+    name: "Pankaj Kumar",
     title: "Office College",
     img: "/pankaj.jpeg",
   },

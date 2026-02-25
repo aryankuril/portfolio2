@@ -4,7 +4,7 @@ import { IoCopyOutline } from "react-icons/io5";
 // Also install this npm i --save-dev @types/react-lottie
 import dynamic from "next/dynamic";
 
-const Lottie = dynamic(() => import("react-lottie"), {
+const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
 });
 
@@ -61,14 +61,14 @@ export const BentoGridItem = ({
 
   const [copied, setCopied] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+const defaultOptions = {
+  loop: copied,
+  autoplay: copied,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
   const handleCopy = () => {
     const text = "aryankuril.s@gmail.com";
@@ -81,7 +81,7 @@ export const BentoGridItem = ({
       className={cn(
         // remove p-4 rounded-3xl dark:bg-black dark:border-white/[0.2] bg-white  border border-transparent, add border border-white/[0.1] overflow-hidden relative
         "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
-        className
+        className,
       )}
       style={{
         //   add these two
@@ -103,8 +103,9 @@ export const BentoGridItem = ({
           )}
         </div>
         <div
-          className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"
-            } `}
+          className={`absolute right-0 -bottom-5 ${
+            id === 5 && "w-full opacity-80"
+          } `}
         >
           {spareImg && (
             <img
@@ -125,7 +126,7 @@ export const BentoGridItem = ({
         <div
           className={cn(
             titleClassName,
-            " relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+            " relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10",
           )}
         >
           {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
@@ -180,11 +181,20 @@ export const BentoGridItem = ({
               {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
               {/* add handleCopy() for the copy the text */}
               <div
-                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-                  }`}
+                className={`absolute -bottom-5 right-0 ${
+                  copied ? "block" : "block"
+                }`}
               >
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
-                <Lottie options={defaultOptions} height={200} width={400} />
+                {copied && (
+                  <div className="absolute -bottom-5 right-0">
+                    <Lottie
+                      animationData={animationData}
+                      loop={false}
+                      style={{ height: 200, width: 400 }}
+                    />
+                  </div>
+                )}
               </div>
 
               <MagicButton

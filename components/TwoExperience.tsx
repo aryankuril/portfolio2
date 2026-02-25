@@ -126,6 +126,7 @@ const TwoExperience = () => {
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
       >
         {/* <p className="text-center text-gray-400 text-[16px]">
           What I have done so far
@@ -134,9 +135,9 @@ const TwoExperience = () => {
           Work Experience
         </h2> */}
         <h1 className="heading">
-         Work 
-        <span className="text-purple"> Experience</span>
-      </h1>
+          Work
+          <span className="text-purple"> Experience</span>
+        </h1>
       </motion.div>
 
       <div className="mt-20 flex flex-col">
